@@ -1,73 +1,38 @@
 <!DOCTYPE html>
-<html >
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Age Calculator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+<link rel="stylesheet" href="style.css">
+  </head>
+  <body>
     <div class="container">
-        <div class="Calculator">
-<h1>Age <br><span> Calculator</span></h1>
-<div class="input-box">
-<input type="date" id="date">
-<button>Calculator</button>
-</div>
-<p id="return"></p>
+      <div class="input-wrapper">
+        <input type="date" id="date-input" />
+        <button id="calc-age-btn">Calculate</button>
+      </div>
+      <div class="output-wrapper">
+        <div>
+          <span id="years">-</span>
+          <p>Years</p>
+        </div>
+        <div>
+          <span id="months">-</span>
+          <p>Months</p>
+        </div>
+        <div>
+          <span id="days">-</span>
+          <p>Days</p>
+        </div>
+      </div>
     </div>
-</div>
-    
-
-
-<script>
-
-    let userInput = document.getElementById("date");
-    userInput.max = new Date().toISOString().split("T")[0];
-    let result = document.getElementById("result");
-
-    function calculateAge(){
-        let birthDate = new Date(userInput.value);
-        let d1 = birthDate.getDate();
-        let m1 = birthDate.getMonth() + 1;
-        let y1 = birthDate.getFullYear();
-        
-        let today = new Date();
-        let d2 = birthDate.getDate();
-        let m2 = birthDate.getMonth() + 1;
-        let y2 = birthDate.getFullYear();
-       let d3, m3, y3;
-y3 = y2 - y1;
-if(m2 >= m1){
-    m3 = m2 - m1;
-}else{
-    y3--;
-    m3 = 12 + m2 - m1;
-}
-if(d2 >= d1){
-    d3 = d2 - d1;
-
-}else{
-m3--;
-d3 = getDaysInMonth(y1,m1)+d2-d1;
-}
-if(m3 < 0){
-    m3 = 11;
-    y3--;
-
-}
-// console.log(y2,m3,d3)
-result.innerHTML = `you are ${y3}years,${m3}months and ${d3}days old`;
-
-    }
-function getDaysInMonth(year,month){
-return new Date(year,month,0).getDate();
-}
-
-    
-
-
-    
-</script>
-</body>
+    <!-- Script -->
+    <script src="app.js"></script>
+  </body>
 </html>
